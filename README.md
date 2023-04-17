@@ -15,9 +15,10 @@ cd $HOME
 wget https://raw.githubusercontent.com/viennguyenbkdn/Celestia_DAS_Monitoring_Setup/main/celestia_das_monitoring_setup.sh
 chmod +x $HOME/celestia_das_monitoring_setup.sh
 ./celestia_das_monitoring_setup.sh
-``
+```
+
 - Login Grafana link shown in result of last script => select `Dashboards` => `Browse`
-![image](https://user-images.githubusercontent.com/91453629/232376243-a9a23317-60d2-4ab0-9d0c-01a76001ac78.png)
+![image](https://user-images.githubusercontent.com/91453629/232376637-f7422623-0371-4412-9778-739342b53152.png)
 
 - Select attached dashboard `Celestia_DA_Node` as below
 ![image](https://user-images.githubusercontent.com/91453629/232376375-265689bd-5db7-4617-bcec-d74ad83e4fbb.png)
