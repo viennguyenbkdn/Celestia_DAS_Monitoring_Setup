@@ -48,3 +48,4 @@ chmod +x $HOME/celestia_das_monitoring_setup.sh
 - So now u can monitor your node via Grafana monitoring tool.
 ![image](https://user-images.githubusercontent.com/91453629/232376495-283b752b-6cff-4d70-b936-834d956a9d42.png)
 
+- Let's enjoy, hope u can monitor ur node better and share more metrics of DA node to Celestia community
