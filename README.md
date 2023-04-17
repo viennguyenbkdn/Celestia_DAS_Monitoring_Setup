@@ -8,7 +8,29 @@
   + Output
     * Grafana monitoring tool
 
-### 2. Manual Installation
+### 2. Detail description
+- Structure of repo
+```
+Celestia_DAS_Monitoring_Setup/
+├── da_exporter # This part is to collect status of DA node via API and extract to metrics with Prometheus format
+│   └── script
+│       ├── celestia_node.sh 
+│       └── config.yaml
+├── docker-compose.yml
+├── grafana # This part is to setup Grafana monitoring tool
+│   ├── dashboards
+│   │   └── Celestia-DA-node.json
+│   ├── dashboards.yml
+│   ├── datasource.yml
+│   └── grafana.ini
+├── otelcol # This part is to setup OTELCOL tool which collect all input data from metrics of DA node, node-exporter, da_exporter then send to OTEL of Celestia team and our prometheus tool
+│   └── config.yaml
+├── prometheus # This part is to setup Prometheus monitoring tool
+│   └── prometheus.yml
+└── README.md
+```
+
+### 3. Manual Installation
 - Run below command
 ```
 cd $HOME
