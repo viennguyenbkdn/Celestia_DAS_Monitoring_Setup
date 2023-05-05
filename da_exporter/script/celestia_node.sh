@@ -5,6 +5,10 @@
 # NODE_ID="12D3KooWMTA3fhNFGXQo14fQPaFduphZbvhsFX2t2SkQfm8NEaAK"
 # HOST_IP="94.130.239.162"
 
+# Current version of DA node
+# echo -e "# Current version of DA node"
+# echo -e "cur_version_da_node{instance=\"$NODE_ID\", job=\"Version\"} $CEL_ve"
+
 # Current uptime of DA node
 output=$(curl -s https://leaderboard.celestia.tools/api/v1/nodes/$NODE_ID | jq -r '[.node_id,.uptime] | join(" ")')
 echo "$output" | awk '{print "das_owner_node_uptime{instance=\""$1"\", job=\"DAS_Uptime\"} "$2" "}'
@@ -39,25 +43,23 @@ ACTION=$(cat <<EOF
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "method": "p2p.BandwidthForProtocol",
-  "params": [
-    "/celestia/blockspacerace-0/ipfs/bitswap/1.2.0"
-  ]
+  "method": "p2p.BandwidthStats",
+  "params": []
 }
 EOF
 )
 
-BandwidthForProtocol=$(curl -s -X POST -H 'Authorization: Bearer '$NODE_AUTH_TOKEN'' -H "Content-Type: application/json" -d "$ACTION" http://$HOST_IP:26658/ | jq .result -r)
-TotalIn=$(echo $BandwidthForProtocol | jq -r .TotalIn)
-TotalOut=$(echo $BandwidthForProtocol | jq -r .TotalOut)
-RateIn=$(echo $BandwidthForProtocol | jq -r .RateIn)
-RateOut=$(echo $BandwidthForProtocol | jq -r .RateOut)
+BandwidthStats=$(curl -s -X POST -H 'Authorization: Bearer '$NODE_AUTH_TOKEN'' -H "Content-Type: application/json" -d "$ACTION" http://$HOST_IP:26658/ | jq .result -r)
+TotalIn=$(echo $BandwidthStats | jq -r .TotalIn)
+TotalOut=$(echo $BandwidthStats | jq -r .TotalOut)
+RateIn=$(echo $BandwidthStats | jq -r .RateIn)
+RateOut=$(echo $BandwidthStats | jq -r .RateOut)
 
-echo -e "# Bandwidth occupied by protocol"
-echo -e "bandwidthforprotocol_totalin{instance=\"$NODE_ID\", job=\"BandwidthForProtocol\"} $TotalIn"
-echo -e "bandwidthforprotocol_totalout{instance=\"$NODE_ID\", job=\"BandwidthForProtocol\"} $TotalOut"
-echo -e "bandwidthforprotocol_ratein{instance=\"$NODE_ID\", job=\"BandwidthForProtocol\"} $RateIn"
-echo -e "bandwidthforprotocol_ratein{instance=\"$NODE_ID\", job=\"BandwidthForProtocol\"} $RateOut"
+echo -e "# Bandwidth Status for all data sent/received by the local peer, regardless of protocol or remote peer IDs"
+echo -e "bandwidthstats_totalin{instance=\"$NODE_ID\", job=\"BandwidthStats\"} $TotalIn"
+echo -e "bandwidthstats_totalout{instance=\"$NODE_ID\", job=\"BandwidthStats\"} $TotalOut"
+echo -e "bandwidthstats_ratein{instance=\"$NODE_ID\", job=\"BandwidthStats\"} $RateIn"
+echo -e "bandwidthstats_rateout{instance=\"$NODE_ID\", job=\"BandwidthStats\"} $RateOut"
 
 
 # Peers returns connected peers
