@@ -48,11 +48,12 @@ chmod +x $HOME/celestia_das_monitoring_setup.sh
 
 - So now u can monitor your node via Grafana monitoring tool.
  
-**Celestia DA Node**
+  **Celestia DA Node**
 
   ![image](https://user-images.githubusercontent.com/91453629/237025409-33673517-05c1-418e-a2bf-74f1ab99e204.png)
 
-**Server hardware information**
+  **Server hardware information**
+  
   ![image](https://user-images.githubusercontent.com/91453629/237025786-990682f6-ebe5-41a9-bc67-e204e1405c36.png)
 
 - If you wanna monitor more DA node, just add more datasource to Prometheus.
