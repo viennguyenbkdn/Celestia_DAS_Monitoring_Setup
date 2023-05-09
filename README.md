@@ -31,7 +31,7 @@ Celestia_DAS_Monitoring_Setup/
 ```
 
 ### 3. Manual Installation
-- Run below command
+- Run below command in your server
 ```
 cd $HOME
 wget https://raw.githubusercontent.com/viennguyenbkdn/Celestia_DAS_Monitoring_Setup/main/celestia_das_monitoring_setup.sh
@@ -39,7 +39,7 @@ chmod +x $HOME/celestia_das_monitoring_setup.sh
 ./celestia_das_monitoring_setup.sh
 ```
 
-- Login Grafana link shown in result of last script => select `Dashboards` => `Browse`
+- Login Grafana link shown in result of last script by your browser with user/pass is `admin/admin` => select `Dashboards` => `Browse`
  
   ![image](https://user-images.githubusercontent.com/91453629/232376637-f7422623-0371-4412-9778-739342b53152.png)
 
@@ -48,10 +48,11 @@ chmod +x $HOME/celestia_das_monitoring_setup.sh
 
 - So now u can monitor your node via Grafana monitoring tool.
  
-* Celestia DA Node
+**Celestia DA Node**
+
   ![image](https://user-images.githubusercontent.com/91453629/237025409-33673517-05c1-418e-a2bf-74f1ab99e204.png)
 
-* Server hardware information
+**Server hardware information**
   ![image](https://user-images.githubusercontent.com/91453629/237025786-990682f6-ebe5-41a9-bc67-e204e1405c36.png)
 
 - If you wanna monitor more DA node, just add more datasource to Prometheus.
